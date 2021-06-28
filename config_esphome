@@ -1,0 +1,316 @@
+substitutions:
+  plug_name: esp32_koridor
+
+esphome:
+  name: ${plug_name}
+  platform: ESP32
+  comment: Коридор
+  board: esp-wrover-kit
+#  board: esp32doit-devkit-v1
+#  board: esp32dev
+#  board: nodemcu-32s
+
+wifi:
+  networks:
+  - ssid: !secret ap_ssid
+    password: !secret ap_password
+  ap:
+    ssid: "${plug_name} Hotspot"
+    password: "J4buzjhCMSA2"
+  use_address: 192.168.90.145
+captive_portal:
+
+#web_server:
+#  port: 80
+#  auth:
+#    username: white
+#    password: Zaq12345
+
+logger:
+
+ota:
+  password: !secret ota
+api:
+  password: !secret api
+
+  services:
+  - service: dfplayer_next
+    then:
+      - dfplayer.play_next:
+  - service: dfplayer_previous
+    then:
+      - dfplayer.play_previous:
+  - service: dfplayer_play
+    variables:
+      file: int
+    then:
+      - dfplayer.play: !lambda 'return file;'
+  - service: dfplayer_play_loop
+    variables:
+      file: int
+      loop_: bool
+    then:
+      - dfplayer.play:
+          file: !lambda 'return file;'
+          loop: !lambda 'return loop_;'
+  - service: dfplayer_play_folder
+    variables:
+      folder: int
+      file: int
+    then:
+      - dfplayer.play_folder:
+          folder: !lambda 'return folder;'
+          file: !lambda 'return file;'
+
+  - service: dfplayer_play_loop_folder
+    variables:
+      folder: int
+    then:
+      - dfplayer.play_folder:
+          folder: !lambda 'return folder;'
+          loop: True
+
+  - service: dfplayer_set_device_tf
+    then:
+      - dfplayer.set_device: TF_CARD
+
+  - service: dfplayer_set_device_usb
+    then:
+      - dfplayer.set_device: USB
+
+  - service: dfplayer_set_volume
+    variables:
+      volume: int
+    then:
+      - dfplayer.set_volume: !lambda 'return volume;'
+  - service: dfplayer_set_eq
+    variables:
+      preset: int
+    then:
+      - dfplayer.set_eq: !lambda 'return static_cast<dfplayer::EqPreset>(preset);'
+
+  - service: dfplayer_sleep
+    then:
+      - dfplayer.sleep
+
+  - service: dfplayer_reset
+    then:
+      - dfplayer.reset
+
+  - service: dfplayer_start
+    then:
+      - dfplayer.start
+
+  - service: dfplayer_pause
+    then:
+      - dfplayer.pause
+
+  - service: dfplayer_stop
+    then:
+      - dfplayer.stop
+
+  - service: dfplayer_random
+    then:
+      - dfplayer.random
+
+uart:
+  tx_pin: 23
+  rx_pin: 22
+  baud_rate: 9600
+
+#esp32_ble_beacon:
+#  type: iBeacon
+#  uuid: 'fda50693-a4e2-4fb1-afcf-c6eb22061984'
+
+esp32_ble_tracker:
+  scan_parameters:
+    active: false
+#    interval: 320ms
+#    window: 320ms
+#   duration: 60s
+
+
+#text_sensor:
+#  - platform: ble_scanner
+#    name: "BLE Devices Scanner"
+
+sensor:
+  - platform: wifi_signal
+    name: "${plug_name} WiFi"
+    update_interval: 60s
+
+  - platform: uptime
+    id: device_uptime
+
+#  - platform: dht
+#    model: dht22
+#    pin: 5
+#    temperature:
+#      name: "${plug_name} Temperature"
+#    humidity:
+#      name: "${plug_name} Humidity"
+#    update_interval: 60s
+
+light:
+  - platform: rgb
+    name: "${plug_name} light"
+    red: output_red
+    green: output_green
+    blue: output_blue
+    default_transition_length: 1500ms
+    effects:
+#      - random:
+      - random:
+          name: "My Slow Random Effect"
+          transition_length: 30s
+          update_interval: 30s
+      - random:
+          name: "My Fast Random Effect"
+          transition_length: 4s
+          update_interval: 5s
+#      - strobe:
+      - strobe:
+          name: Police
+          colors:
+            - state: True
+              brightness: 100%
+              red: 100%
+              green: 0%
+              blue: 0%
+              duration: 200ms
+            - state: False
+              duration: 100ms
+            - state: True
+              brightness: 100%
+              red: 100%
+              green: 0%
+              blue: 0%
+              duration: 200ms
+            - state: False
+              duration: 100ms
+            - state: True
+              brightness: 100%
+              red: 0%
+              green: 0%
+              blue: 100%
+              duration: 200ms
+            - state: False
+              duration: 100ms
+            - state: True
+              brightness: 100%
+              red: 0%
+              green: 0%
+              blue: 100%
+              duration: 200ms
+            - state: False
+              duration: 100ms
+#      - flicker:
+      - flicker:
+          name: Flicker Effect With Custom Values
+          alpha: 95%
+          intensity: 1.5%
+output:
+  - platform: ledc
+    id: output_red
+    pin: 21
+#    min_power: 0.1
+
+  - platform: ledc
+    id: output_green
+    pin: 19
+#    min_power: 0.1
+
+  - platform: ledc
+    id: output_blue
+    pin: 18
+
+binary_sensor:
+  - platform: ble_presence
+    mac_address: 72:64:6C:28:FF:FF
+    name: "NRF51822_white_1"
+
+  - platform: ble_presence
+    mac_address: 72:64:6C:28:FF:DD
+    name: "NRF51822_taneza_1"
+
+  - platform: ble_presence
+    mac_address: 72:64:6C:28:FF:EE
+    name: "NRF51822_denis_1"
+
+  - platform: gpio
+    pin:
+     number: 16
+     mode: INPUT
+     inverted: true
+    name: "${plug_name} Door"
+    device_class: door
+    filters:
+      - delayed_on: 500ms
+      - delayed_off: 500ms
+
+  - platform: gpio
+    pin:
+     number: 17
+     mode: INPUT
+     inverted: true
+    name: "${plug_name} lock"
+    device_class: door
+    filters:
+      - delayed_on: 500ms
+      - delayed_off: 500ms
+
+  - platform: gpio
+    pin: 33
+    name: "${plug_name} PIR1"
+    device_class: motion
+
+  - platform: gpio
+    pin: 25
+    name: "${plug_name} PIR2"
+    device_class: motion
+
+  - platform: gpio
+#    pin: 26
+    pin:
+     number: 26
+     mode: INPUT_PULLUP
+     inverted: true
+    name: "${plug_name} PIR3"
+    device_class: motion
+
+#  - platform: gpio
+#    pin: 27
+#    name: "${plug_name} PIR4"
+#    device_class: motion
+
+switch:
+  - platform: restart
+    name: "${plug_name} restart"
+
+dfplayer:
+  on_finished_playback:
+    then:
+      logger.log: 'Playback finished event'
+
+text_sensor:
+  - platform: version
+    name: "${plug_name} Version"
+    hide_timestamp: True
+
+  - platform: template
+    name: "${plug_name} uptime"
+    lambda: |-
+      uint32_t uptime = (id(device_uptime).state);
+      int minutes = (uptime % 3600) / 60;
+      int hours = (uptime % 86400) / 3600;
+      int days = uptime / 86400;
+      if (days > 0) {
+        return { (String(days) + " д." + String(hours) + " ч." + String(minutes) + " мин.").c_str() };
+      }
+      if (hours > 0) {
+        return { (String(hours) + " ч. " + String(minutes) + " мин.").c_str() };
+      } else {
+        return { (String(minutes) + " мин.").c_str() };
+      }
+    update_interval: 60s
+    icon: mdi:clock-start
