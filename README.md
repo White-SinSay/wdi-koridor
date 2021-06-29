@@ -11,19 +11,31 @@
 * Подключение DFplayer mini (для воспроизведения mp3 с флешки).
 
 
-### СПИСОК ЖЕЛЕЗА:
-* Wemos D1 mini: http://alli.pub/5mdxgv ИЛИ NodeMCU V3 и шилды к нему: http://ali.pub/3zoiql РЕЛЕ
-* Активные модули реле: http://alli.pub/5mdxnv
-* ИЛИ подойдет релейный модуль для Wemos: http://alli.pub/5mdxk6
-* ИЛИ Твердотельное реле: http://alli.pub/5mdzqj
-* Модули питания 220-12/5/3.3 в: http://alli.pub/5mdxsx
-* ИЛИ (лучше) DC-DC преобразователь без ШИМ: http://alli.pub/5mdzo0
-* DC-DC с ШИМом: http://alli.pub/5me018 Кнопка 220в: http://alli.pub/5mg55w http://alli.pub/5mg59z
-* Разъемы KF141 (зеленые, планируется разводить плату с ними): http://alli.pub/5mdwp9
-* Термистор: Термисторы 5шт: http://got.by/45wjbz
-* Датчики Dallas (нормальные): http://alli.pub/5mdx8i
-* Комплект сопротивлений 0,25Вт от 1Ом до 1МОм: http://ali.pub/3zp04i
-* Печатная плата: http://alli.pub/5mlqm3
+### СПИСОК радио компонентов:
+* HC-SR505:
+https://aliexpress.ru/item/32477783558.html
+* RCWL-0516:
+https://aliexpress.ru/item/32788538841.html
+* AM2320:
+https://aliexpress.ru/item/32769460765.html
+* KF141:
+https://aliexpress.ru/item/4000902916398.html
+* KF301:
+https://aliexpress.ru/item/32753156100.html
+* IRLB3034:
+https://aliexpress.ru/item/32701449906.html
+* IRLB3813:
+https://aliexpress.ru/item/33016073364.html
+* JST XH 2,54:
+https://aliexpress.ru/item/1005001459351126.html
+* ESP32 30Pin:
+https://aliexpress.ru/item/32802431728.html
+* DFPlay:
+https://aliexpress.ru/item/32641284367.html
+* 2,54 мм (6 цветов):
+https://aliexpress.ru/item/32744837236.html
+* Резисторы:
+https://aliexpress.ru/item/32847011772.html
 
 ### Внешний вид платы
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_layer_up.png)
