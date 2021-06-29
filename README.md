@@ -27,7 +27,7 @@
 
 ### Внешний вид платы
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_UP.png)
-[Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_down.png)
+![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_down.png)
 ### 3D вид
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_3D.png)
 ### СХЕМА
