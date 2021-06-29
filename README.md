@@ -32,7 +32,7 @@
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_3D.png)
 ### СХЕМА
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/Schematic.png)
-![EasyEDA] (https://oshwlab.com/ivahov555/wdi-esp32_koridor)
+![EasyEDA](https://oshwlab.com/ivahov555/wdi-esp32_koridor)
 ### КАК НАСТРОИТЬ
 Прошивка собрана в аддоне ESPHome.
 Про него можно посмотреть у меня на Youtube канале (https://www.youtube.com/channel/UCoZhZPAewlcDGRc_s6Masrw)
