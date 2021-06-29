@@ -6,9 +6,6 @@ esphome:
   platform: ESP32
   comment: Коридор
   board: esp-wrover-kit
-#  board: esp32doit-devkit-v1
-#  board: esp32dev
-#  board: nodemcu-32s
 
 wifi:
   networks:
@@ -17,14 +14,14 @@ wifi:
   ap:
     ssid: "${plug_name} Hotspot"
     password: "J4buzjhCMSA2"
-  use_address: 192.168.90.145
+#  use_address: 192.168.90.145
 captive_portal:
 
 #web_server:
 #  port: 80
 #  auth:
-#    username: white
-#    password: Zaq12345
+#    username: esp
+#    password: 12345
 
 logger:
 
@@ -118,21 +115,10 @@ uart:
   rx_pin: 22
   baud_rate: 9600
 
-#esp32_ble_beacon:
-#  type: iBeacon
-#  uuid: 'fda50693-a4e2-4fb1-afcf-c6eb22061984'
 
 esp32_ble_tracker:
   scan_parameters:
     active: false
-#    interval: 320ms
-#    window: 320ms
-#   duration: 60s
-
-
-#text_sensor:
-#  - platform: ble_scanner
-#    name: "BLE Devices Scanner"
 
 sensor:
   - platform: wifi_signal
@@ -142,14 +128,14 @@ sensor:
   - platform: uptime
     id: device_uptime
 
-#  - platform: dht
-#    model: dht22
-#    pin: 5
-#    temperature:
-#      name: "${plug_name} Temperature"
-#    humidity:
-#      name: "${plug_name} Humidity"
-#    update_interval: 60s
+  - platform: dht
+    model: dht22
+    pin: 5
+    temperature:
+      name: "${plug_name} Temperature"
+    humidity:
+      name: "${plug_name} Humidity"
+    update_interval: 60s
 
 light:
   - platform: rgb
@@ -159,7 +145,6 @@ light:
     blue: output_blue
     default_transition_length: 1500ms
     effects:
-#      - random:
       - random:
           name: "My Slow Random Effect"
           transition_length: 30s
@@ -168,7 +153,6 @@ light:
           name: "My Fast Random Effect"
           transition_length: 4s
           update_interval: 5s
-#      - strobe:
       - strobe:
           name: Police
           colors:
@@ -204,7 +188,6 @@ light:
               duration: 200ms
             - state: False
               duration: 100ms
-#      - flicker:
       - flicker:
           name: Flicker Effect With Custom Values
           alpha: 95%
@@ -213,30 +196,16 @@ output:
   - platform: ledc
     id: output_red
     pin: 21
-#    min_power: 0.1
 
   - platform: ledc
     id: output_green
     pin: 19
-#    min_power: 0.1
 
   - platform: ledc
     id: output_blue
     pin: 18
 
 binary_sensor:
-  - platform: ble_presence
-    mac_address: 72:64:6C:28:FF:FF
-    name: "NRF51822_white_1"
-
-  - platform: ble_presence
-    mac_address: 72:64:6C:28:FF:DD
-    name: "NRF51822_taneza_1"
-
-  - platform: ble_presence
-    mac_address: 72:64:6C:28:FF:EE
-    name: "NRF51822_denis_1"
-
   - platform: gpio
     pin:
      number: 16
@@ -270,18 +239,14 @@ binary_sensor:
     device_class: motion
 
   - platform: gpio
-#    pin: 26
-    pin:
-     number: 26
-     mode: INPUT_PULLUP
-     inverted: true
+    pin: 26
     name: "${plug_name} PIR3"
     device_class: motion
 
-#  - platform: gpio
-#    pin: 27
-#    name: "${plug_name} PIR4"
-#    device_class: motion
+  - platform: gpio
+    pin: 27
+    name: "${plug_name} PIR4"
+    device_class: motion
 
 switch:
   - platform: restart
