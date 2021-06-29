@@ -26,8 +26,8 @@
 * Печатная плата: http://alli.pub/5mlqm3
 
 ### Внешний вид платы
-![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_UP.png)
-![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_DOWN.png)
+![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_layer_up.png)
+![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_layer_down.png)
 ### 3D вид
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_3D.png)
 ### СХЕМА
