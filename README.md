@@ -34,21 +34,16 @@
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/Schematic.png)
 
 ### КАК НАСТРОИТЬ
-Пользуясь преимуществами библиотеки 1-Wire для цифровых датчиков задействован только один пин, для возможности подключения дополнительных реле и перефирии.
-Минут столько в том, что нужно предварительно указать адрес подключаемых датчиков в скетче. Найти адрес можно с помощью этого скетча- <a href="https://github.com/Technarrus/Dallas_Adress">Dallas Adress</a>, как - на странице подробно расписано.
-Далее нужно откалибровать показания термистора, путем изменения #define REFERENCE_RESISTANCE, что бы температура была более менее равна показаниям далласов.
-
+Прошивка собрана в аддоне ESPHome. Про него можно посмотреть у меня на Youtube канале (https://www.youtube.com/channel/UCoZhZPAewlcDGRc_s6Masrw)
+Сам конфиг сдесь (https://github.com/White-SinSay/wdi-koridor/blob/main/images/config_esphome)
  
-### РЕЛИЗЫ
-Сюда будут добавляться старые версии
 
 ### ВИДЕО
 
-* <a href="https://youtu.be/zlENMWZuub8"> Видео про данный проект</a>
-* <a href="https://www.youtube.com/channel/UCzI016x7MItBtQCJiSWI7yA">Канал YouTube</a>
-* <a href=" ">-</a>
+* <a href="https://youtu.be/2g3mg0SKGKM"> Видео про данный контроллер</a>
+* <a href="https://youtube.com/user/ivahov555">Канал YouTube</a>
 
 ### Связь
 Вопросы, обсуждения, предложения через следующие сообщества:
-* [Telegram группа](https://t.me/technarr)
-* [Группа в VK](https://vk.com/technarrus)
+* [Telegram группа](https://t.me/ivahov_wgi)
+* [Группа в VK](https://vk.com/club204251683)
