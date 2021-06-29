@@ -27,15 +27,16 @@
 
 ### Внешний вид платы
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_UP.png)
-![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_down.png)
+[Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_down.png)
 ### 3D вид
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/PCB_3D.png)
 ### СХЕМА
 ![Схема](https://github.com/White-SinSay/wdi-koridor/blob/main/images/Schematic.png)
 
 ### КАК НАСТРОИТЬ
-Прошивка собрана в аддоне ESPHome. Про него можно посмотреть у меня на Youtube канале (https://www.youtube.com/channel/UCoZhZPAewlcDGRc_s6Masrw)
-Сам конфиг сдесь (https://github.com/White-SinSay/wdi-koridor/blob/main/images/config_esphome)
+Прошивка собрана в аддоне ESPHome.
+Про него можно посмотреть у меня на Youtube канале (https://www.youtube.com/channel/UCoZhZPAewlcDGRc_s6Masrw)
+Сам конфиг в файле config_esphome
  
 
 ### ВИДЕО
